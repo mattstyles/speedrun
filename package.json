@@ -1,0 +1,17 @@
+{
+  "name": "speedrun",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Matt Styles",
+  "license": "MIT",
+  "dependencies": {
+    "get-port": "^4.1.0",
+    "minimist": "^1.2.0",
+    "opn": "^5.4.0",
+    "parcel-bundler": "^1.11.0"
+  }
+}
