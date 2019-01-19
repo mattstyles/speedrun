@@ -13,13 +13,17 @@ const rimraf = require('rimraf')
 
 const DEFAULT_PORT = 3000
 
-function onChange (bundle) {
+const onChange = (bundle) => {
   // console.log(bundle)
 }
 
 const onBuildEnd = (opts) => () => {
-  rimraf.sync(opts.entry)
+  if (opts.deleteHtml) {
+    rimraf.sync(opts.entry)
+  }
 }
+
+const isHTMLPath = (entry) => /\.html$/.test(entry)
 
 function createIndex (entry) {
   const basename = entry.replace(path.extname(entry), '')
@@ -54,14 +58,16 @@ async function bundle (opts) {
 exports.run = async function run (options) {
   const opts = Object.assign({
     entry: './',
-    port: DEFAULT_PORT
+    port: DEFAULT_PORT,
+    deleteHtml: false
   }, options)
 
   // Generate HTML if not supplied
-  if (!/\.html$/.test(opts.entry)) {
+  if (!isHTMLPath(opts.entry)) {
     try {
       const filename = await createIndex(opts.entry)
       opts.entry = filename
+      opts.deleteHtml = true
     } catch (err) {
       console.error(err)
       process.exit(1)
