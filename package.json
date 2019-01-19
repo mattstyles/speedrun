@@ -3,7 +3,7 @@
   "version": "0.1.1",
   "description": "",
   "bin": {
-    "speedrun": "./bin/speedrun"
+    "speedrun": "./bin/speedrun.js"
   },
   "main": "index.js",
   "scripts": {
