@@ -26,7 +26,7 @@ const onBuildEnd = (opts) => () => {
 const isHTMLPath = (entry) => /\.html$/.test(entry)
 
 function createIndex (entry) {
-  const basename = entry.replace(path.extname(entry), '')
+  const basename = path.basename(entry.replace(path.extname(entry), ''))
   // const filepath = `${os.tmpdir()}/${basename}.${generateHash()}.html`
   const filepath = `${basename}.${generateHash()}.html`
 
