@@ -21,7 +21,7 @@ const onChange = (bundle) => {
 const onBuildEnd = (opts) => () => {
   debug('Build complete.')
   if (opts.deleteHtml) {
-    debug('Deleting ', opts.entry)
+    // debug('Deleting ', opts.entry)
     // rimraf.sync(opts.entry)
   }
 }
