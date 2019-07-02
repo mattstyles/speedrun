@@ -12,10 +12,11 @@
   "author": "Matt Styles",
   "license": "MIT",
   "dependencies": {
+    "debug": "^4.1.1",
     "get-port": "^4.1.0",
     "minimist": "^1.2.0",
     "opn": "^5.4.0",
-    "parcel-bundler": "^1.11.0",
+    "parcel-bundler": "^1.12.0",
     "random-hash": "^4.0.1",
     "rimraf": "^2.6.3",
     "simple-html-index": "^1.5.0"

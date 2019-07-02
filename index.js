@@ -3,6 +3,7 @@
 const fs = require('fs')
 // const os = require('os')
 const path = require('path')
+const debug = require('debug')('speedrun')
 
 const Bundler = require('parcel-bundler')
 const opn = require('opn')
@@ -18,9 +19,24 @@ const onChange = (bundle) => {
 }
 
 const onBuildEnd = (opts) => () => {
+  debug('Build complete.')
   if (opts.deleteHtml) {
+    debug('Deleting ', opts.entry)
+    // rimraf.sync(opts.entry)
+  }
+}
+
+const onBuildError = (error) => {
+  console.error(error)
+}
+
+const onProcessEnd = (opts) => () => {
+  debug('Process clean up')
+  if (opts.deleteHtml) {
+    debug('Deleting ', opts.entry)
     rimraf.sync(opts.entry)
   }
+  process.exit(1)
 }
 
 const isHTMLPath = (entry) => /\.html$/.test(entry)
@@ -47,11 +63,15 @@ async function bundle (opts) {
   const bundler = new Bundler(opts.entry)
   bundler.on('bundled', onChange)
   bundler.on('buildEnd', onBuildEnd(opts))
+  bundler.on('buildError', onBuildError)
 
+  debug('Attempting to find port', opts.port)
   const port = await getPort({
     port: opts.port
   })
+  debug('Bundler serving to port', port)
   await bundler.serve(port)
+  debug('Opening browser')
   opn(`http://0.0.0.0:${port}`)
 }
 
@@ -59,13 +79,16 @@ exports.run = async function run (options) {
   const opts = Object.assign({
     entry: './',
     port: DEFAULT_PORT,
-    deleteHtml: false
+    deleteHtml: false,
+    autoOpen: true
   }, options)
 
   // Generate HTML if not supplied
   if (!isHTMLPath(opts.entry)) {
     try {
+      debug('No index file supplied, creating one.')
       const filename = await createIndex(opts.entry)
+      debug('Temporary index created at', filename)
       opts.entry = filename
       opts.deleteHtml = true
     } catch (err) {
@@ -73,6 +96,9 @@ exports.run = async function run (options) {
       process.exit(1)
     }
   }
+
+  process.on('SIGINT', onProcessEnd(opts))
+  // process.on('SIGTERM', onProcessEnd(opts))
 
   bundle(opts)
 }
