@@ -36,7 +36,7 @@ const onProcessEnd = (opts) => () => {
     debug('Deleting ', opts.entry)
     rimraf.sync(opts.entry)
   }
-  process.exit(1)
+  process.exit(0)
 }
 
 const isHTMLPath = (entry) => /\.html$/.test(entry)
