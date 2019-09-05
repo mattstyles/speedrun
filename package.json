@@ -13,12 +13,12 @@
   "license": "MIT",
   "dependencies": {
     "debug": "^4.1.1",
-    "get-port": "^4.1.0",
+    "get-port": "^5.0.0",
     "minimist": "^1.2.0",
-    "opn": "^5.4.0",
+    "opn": "^6.0.0",
     "parcel-bundler": "^1.12.0",
     "random-hash": "^4.0.1",
-    "rimraf": "^2.6.3",
+    "rimraf": "^3.0.0",
     "simple-html-index": "^1.5.0"
   }
 }
