@@ -15,15 +15,11 @@ const rimraf = require('rimraf')
 const DEFAULT_PORT = 3000
 
 const onChange = (bundle) => {
-  // console.log(bundle)
+  debug('Bundle change')
 }
 
 const onBuildEnd = (opts) => () => {
-  debug('Build complete.')
-  if (opts.deleteHtml) {
-    // debug('Deleting ', opts.entry)
-    // rimraf.sync(opts.entry)
-  }
+  debug('Build complete')
 }
 
 const onBuildError = (error) => {
