@@ -82,6 +82,8 @@ exports.run = async function run (options) {
     autoOpen: true
   }, options)
 
+  debug('Starting with', opts)
+
   // Generate HTML if not supplied
   if (!isHTMLPath(opts.entry)) {
     try {

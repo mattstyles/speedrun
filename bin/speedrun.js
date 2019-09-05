@@ -4,7 +4,15 @@ const pkg = require('../package.json')
 const { run } = require('../')
 
 const argv = require('minimist')(process.argv.slice(2), {
-  v: 'version'
+  alias: {
+    v: 'version',
+    o: 'open',
+    p: 'port'
+  },
+  default: {
+    open: true,
+    port: 3000
+  }
 })
 
 if (argv.v) {
@@ -18,5 +26,7 @@ if (!argv._.length) {
 }
 
 run({
-  entry: argv._[0]
+  entry: argv._[0],
+  port: argv.port,
+  autoOpen: argv.open === 'true' || argv.open === true || argv.open > 0
 })
