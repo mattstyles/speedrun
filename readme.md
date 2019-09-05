@@ -143,11 +143,11 @@ run({
 })
 ```
 
-The above script will not automatically launch the browser but will create scaffold an html and run the `main.js` script.
+The above script will not automatically launch the browser but **will** scaffold an html and run the `main.js` script.
 
 ### `entry` [`string`]
 
-This entry point for the project.
+This supplies the entry point for the project.
 
 Parcel supports multiple entry points, `speedrun` supports multiple html entry points **only**. If you give it multiple JS entry points, it won’t work.
 
@@ -165,7 +165,7 @@ Pass as `-p` or `--port` to the cli.
 
 ### `deleteHtml` [`boolean`]
 
-If you don’t want to delete the generated html one when you use a js file as an entry point then supply false. Ordinarily you won’t want to do this, the generated html is not very interesting.
+If you don’t want to delete the generated html file when you use a js file as an entry point then supply `false`. Ordinarily you won’t want to do this, the generated html is not very interesting.
 
 This option can not be passed via the cli.
 
@@ -174,6 +174,14 @@ This option can not be passed via the cli.
 If you want to stop `speedrun` from attempting to launch your browser then supply false.
 
 Pass as `-o` or `--open` to the cli.
+
+### `DEBUG` (cli only)
+
+`speedrun` uses the [debug](https://www.npmjs.com/package/debug) module for additional console output, use `speedrun` as a key unless you want things really noisy.
+
+```sh
+DEBUG=speedrun speedrun entry.js
+```
 
 ## Contributing
 
