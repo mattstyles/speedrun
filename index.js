@@ -67,8 +67,11 @@ async function bundle (opts) {
   })
   debug('Bundler serving to port', port)
   await bundler.serve(port)
-  debug('Opening browser')
-  opn(`http://0.0.0.0:${port}`)
+
+  if (opts.autoOpen) {
+    debug('Opening browser')
+    opn(`http://0.0.0.0:${port}`)
+  }
 }
 
 exports.run = async function run (options) {
