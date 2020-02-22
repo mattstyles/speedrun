@@ -1,6 +1,6 @@
 {
   "name": "speedrun",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Utility for quickly firing up a parcel bundler",
   "bin": {
     "speedrun": "./bin/speedrun.js"
