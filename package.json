@@ -15,7 +15,7 @@
     "debug": "^4.1.1",
     "get-port": "^5.1.1",
     "minimist": "^1.2.0",
-    "opn": "^6.0.0",
+    "open": "^7.0.2",
     "parcel-bundler": "^1.12.4",
     "random-hash": "^4.0.1",
     "rimraf": "^3.0.2",

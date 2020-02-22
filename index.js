@@ -6,7 +6,7 @@ const path = require('path')
 const debug = require('debug')('speedrun')
 
 const Bundler = require('parcel-bundler')
-const opn = require('opn')
+const open = require('open')
 const getPort = require('get-port')
 const { generateHash } = require('random-hash')
 const html = require('simple-html-index')
@@ -70,7 +70,7 @@ async function bundle (opts) {
 
   if (opts.autoOpen) {
     debug('Opening browser')
-    opn(`http://0.0.0.0:${port}`)
+    open(`http://0.0.0.0:${port}`)
   }
 }
 
