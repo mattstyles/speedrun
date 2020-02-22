@@ -20,5 +20,8 @@
     "random-hash": "^4.0.1",
     "rimraf": "^3.0.2",
     "simple-html-index": "^1.5.0"
+  },
+  "devDependencies": {
+    "standard": "^14.3.1"
   }
 }
